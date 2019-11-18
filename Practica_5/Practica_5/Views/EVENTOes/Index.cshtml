@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Practica_5.Models.EVENTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<h2>EVENTOS REGISTRADOS</h2>
+<br />
+<br />
+<label>BUSCAR MEDIANTE EVENTO O DESCRIPCION</label>
+<form method="post">
+    <input type="text" name="EVENTO"/>
+    <input type="submit" value="BUSCAR" placeholder="mm/dd/yyyy" />
+</form>
+<br />
+
+
+
+<div class="panel-success">
+    <div class="panel-heading">EVENTOS GUARDADOS</div>
+    <div class="panel-body">
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    <label>FECHA DE EVENTO</label>
+                </th>
+                <th>
+                    <label>HORA</label>
+                </th>
+                <th>
+                    <label>DESCRIPCION DEL EVENTO</label>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hora)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.descripcion)
+                    </td>
+                    <td>
+                        @Html.ActionLink("EDITAR", "Edit", new { id = item.ID_evento }, new { @class = "btn btn-warning btn-xs" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("DETALLES", "Details", new { id = item.ID_evento }, new { @class = "btn btn-info btn-xs" })
+                    <td>
+                    <td>
+                        @Html.ActionLink("BORRAR", "Delete", new { id = item.ID_evento }, new { @class = "btn btn-danger btn-xs" })
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
+<p>
+    <button class="btn btn-success" onclick="location.href=('@Url.Action("Create","EVENTOes")')">CREAR EVENTO</button>
+</p>

@@ -1,0 +1,56 @@
+﻿@model Practica_5.Models.EVENTO
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>REGISTRO DE EVENTOS</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fecha, new { htmlAttributes = new {placeholder = "MM/DD/YYYY", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.hora, new { htmlAttributes = new {placeholder = "00-00 PM O AM", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new {placeholder = "ACTIVIDAD", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="CREAR EVENTO" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button class="btn btn-info" onclick="location.href=('@Url.Action("Index","EVENTOes")')">VOLVER ATRAS</button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

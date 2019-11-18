@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Practica_5.Models.CONTACTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <br />
+<h2>CONTACTOS REGISTRADOS</h2>
+<br />
+<br />
+<br />
+<br />
+<label>BUSCAR MEDIANTE EL TELEFONO</label>
+<form method="post">
+    <input type="text" name="Telbusqueda" />
+    <input type="submit" value="BUSCAR" />
+</form>
+<br />
+
+<label>BUSCAR MEDIANTE NOMBRE</label>
+<form method="post">
+    <input type="text" name="Nombusqueda" />
+    <input type="submit" value="BUSCAR" />
+</form>
+<br />
+
+<div class="panel-primary">
+    <div class="panel-heading">DATOS PERSONALES</div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    <label>Nombre Completo</label>
+                </th>
+                <th>
+                    <label>Telefono</label>
+                </th>
+                <th>
+                    <label>Correo Electronico</label>
+                </th>
+                <th>
+                    <label>Direccion</label>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.celular)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.direccion)
+                    </td>
+                    <td>
+                        @Html.ActionLink("EDITAR", "Edit", new { id = item.ID_contacto }, new { @class = "btn btn-warning btn-xs" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("DETALLES", "Details", new { id = item.ID_contacto }, new { @class = "btn btn-info btn-xs" })
+                    <td>
+                    <td>
+                        @Html.ActionLink("BORRAR", "Delete", new { id = item.ID_contacto }, new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <p>
+            <button class="btn btn-info" onclick="location.href=('@Url.Action("Create","CONTACTOes")')">CREAR CONTACTO</button>
+        </p>
+    </div>
+</div>
+

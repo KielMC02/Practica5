@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UTILITIES_APPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CONTACTO">
+    <Key>
+      <PropertyRef Name="ID_contacto" />
+    </Key>
+    <Property Name="ID_contacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="25" />
+    <Property Name="celular" Type="varchar" MaxLength="12" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ESTUDIANTES">
+    <Key>
+      <PropertyRef Name="ID_estudiante" />
+    </Key>
+    <Property Name="ID_estudiante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="apellido" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="edad" Type="int" />
+    <Property Name="sexo" Type="varchar" MaxLength="10" />
+    <Property Name="carrera" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="ESTUDIANTES_MATERIAS">
+    <Key>
+      <PropertyRef Name="ID_estudiante_materia" />
+    </Key>
+    <Property Name="ID_estudiante_materia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_estudiante" Type="int" />
+    <Property Name="ID_materia" Type="int" />
+  </EntityType>
+  <EntityType Name="EVENTOS">
+    <Key>
+      <PropertyRef Name="ID_evento" />
+    </Key>
+    <Property Name="ID_evento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="hora" Type="varchar" MaxLength="10" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="MATERIAS">
+    <Key>
+      <PropertyRef Name="ID_materia" />
+    </Key>
+    <Property Name="ID_materia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="25" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="horario" Type="varchar" MaxLength="30" />
+    <Property Name="creditos" Type="int" />
+    <Property Name="profesor" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <Association Name="FK__ESTUDIANT__ID_es__145C0A3F">
+    <End Role="ESTUDIANTES" Type="Self.ESTUDIANTES" Multiplicity="0..1" />
+    <End Role="ESTUDIANTES_MATERIAS" Type="Self.ESTUDIANTES_MATERIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTUDIANTES">
+        <PropertyRef Name="ID_estudiante" />
+      </Principal>
+      <Dependent Role="ESTUDIANTES_MATERIAS">
+        <PropertyRef Name="ID_estudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATERIA_ESTUDAINTE">
+    <End Role="MATERIAS" Type="Self.MATERIAS" Multiplicity="0..1" />
+    <End Role="ESTUDIANTES_MATERIAS" Type="Self.ESTUDIANTES_MATERIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAS">
+        <PropertyRef Name="ID_materia" />
+      </Principal>
+      <Dependent Role="ESTUDIANTES_MATERIAS">
+        <PropertyRef Name="ID_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UTILITIES_APPModelStoreContainer">
+    <EntitySet Name="CONTACTO" EntityType="Self.CONTACTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTUDIANTES" EntityType="Self.ESTUDIANTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTUDIANTES_MATERIAS" EntityType="Self.ESTUDIANTES_MATERIAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EVENTOS" EntityType="Self.EVENTOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MATERIAS" EntityType="Self.MATERIAS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ESTUDIANT__ID_es__145C0A3F" Association="Self.FK__ESTUDIANT__ID_es__145C0A3F">
+      <End Role="ESTUDIANTES" EntitySet="ESTUDIANTES" />
+      <End Role="ESTUDIANTES_MATERIAS" EntitySet="ESTUDIANTES_MATERIAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATERIA_ESTUDAINTE" Association="Self.FK_MATERIA_ESTUDAINTE">
+      <End Role="MATERIAS" EntitySet="MATERIAS" />
+      <End Role="ESTUDIANTES_MATERIAS" EntitySet="ESTUDIANTES_MATERIAS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
