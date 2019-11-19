@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Practica_5.Models.ESTUDIANTES_MATERIAS>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ESTUDIANTE.nombre)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.MATERIA.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MATERIA.descripcion)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ESTUDIANTE.nombre)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.MATERIA.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MATERIA.descripcion)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID_estudiante_materia }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID_estudiante_materia }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID_estudiante_materia })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
