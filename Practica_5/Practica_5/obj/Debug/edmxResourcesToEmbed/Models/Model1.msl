@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UTILITIES_APPModelStoreContainer" CdmEntityContainer="UTILITIES_APPEntities">
+    <EntitySetMapping Name="CONTACTOes">
+      <EntityTypeMapping TypeName="UTILITIES_APPModel.CONTACTO">
+        <MappingFragment StoreEntitySet="CONTACTO">
+          <ScalarProperty Name="ID_contacto" ColumnName="ID_contacto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTUDIANTES">
+      <EntityTypeMapping TypeName="UTILITIES_APPModel.ESTUDIANTE">
+        <MappingFragment StoreEntitySet="ESTUDIANTES">
+          <ScalarProperty Name="ID_estudiante" ColumnName="ID_estudiante" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="carrera" ColumnName="carrera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTUDIANTES_MATERIAS">
+      <EntityTypeMapping TypeName="UTILITIES_APPModel.ESTUDIANTES_MATERIAS">
+        <MappingFragment StoreEntitySet="ESTUDIANTES_MATERIAS">
+          <ScalarProperty Name="ID_estudiante_materia" ColumnName="ID_estudiante_materia" />
+          <ScalarProperty Name="ID_estudiante" ColumnName="ID_estudiante" />
+          <ScalarProperty Name="ID_materia" ColumnName="ID_materia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EVENTOS">
+      <EntityTypeMapping TypeName="UTILITIES_APPModel.EVENTO">
+        <MappingFragment StoreEntitySet="EVENTOS">
+          <ScalarProperty Name="ID_evento" ColumnName="ID_evento" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIAS">
+      <EntityTypeMapping TypeName="UTILITIES_APPModel.MATERIA">
+        <MappingFragment StoreEntitySet="MATERIAS">
+          <ScalarProperty Name="ID_materia" ColumnName="ID_materia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="horario" ColumnName="horario" />
+          <ScalarProperty Name="creditos" ColumnName="creditos" />
+          <ScalarProperty Name="profesor" ColumnName="profesor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="UTILITIES_APPModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

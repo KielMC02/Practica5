@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UTILITIES_APPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CONTACTO">
+    <Key>
+      <PropertyRef Name="ID_contacto" />
+    </Key>
+    <Property Name="ID_contacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="celular" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ESTUDIANTE">
+    <Key>
+      <PropertyRef Name="ID_estudiante" />
+    </Key>
+    <Property Name="ID_estudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="edad" Type="Int32" />
+    <Property Name="sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="carrera" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ESTUDIANTES_MATERIAS" Relationship="Self.FK__ESTUDIANT__ID_es__3D5E1FD2" FromRole="ESTUDIANTES" ToRole="ESTUDIANTES_MATERIAS" />
+  </EntityType>
+  <EntityType Name="ESTUDIANTES_MATERIAS">
+    <Key>
+      <PropertyRef Name="ID_estudiante_materia" />
+    </Key>
+    <Property Name="ID_estudiante_materia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_estudiante" Type="Int32" />
+    <Property Name="ID_materia" Type="Int32" />
+    <NavigationProperty Name="ESTUDIANTE" Relationship="Self.FK__ESTUDIANT__ID_es__3D5E1FD2" FromRole="ESTUDIANTES_MATERIAS" ToRole="ESTUDIANTES" />
+    <NavigationProperty Name="MATERIA" Relationship="Self.FK_MATERIA_ESTUDAINTE" FromRole="ESTUDIANTES_MATERIAS" ToRole="MATERIAS" />
+  </EntityType>
+  <EntityType Name="EVENTO">
+    <Key>
+      <PropertyRef Name="ID_evento" />
+    </Key>
+    <Property Name="ID_evento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="hora" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MATERIA">
+    <Key>
+      <PropertyRef Name="ID_materia" />
+    </Key>
+    <Property Name="ID_materia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="horario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="creditos" Type="Int32" />
+    <Property Name="profesor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ESTUDIANTES_MATERIAS" Relationship="Self.FK_MATERIA_ESTUDAINTE" FromRole="MATERIAS" ToRole="ESTUDIANTES_MATERIAS" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__ESTUDIANT__ID_es__3D5E1FD2">
+    <End Role="ESTUDIANTES" Type="Self.ESTUDIANTE" Multiplicity="0..1" />
+    <End Role="ESTUDIANTES_MATERIAS" Type="Self.ESTUDIANTES_MATERIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTUDIANTES">
+        <PropertyRef Name="ID_estudiante" />
+      </Principal>
+      <Dependent Role="ESTUDIANTES_MATERIAS">
+        <PropertyRef Name="ID_estudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATERIA_ESTUDAINTE">
+    <End Role="MATERIAS" Type="Self.MATERIA" Multiplicity="0..1" />
+    <End Role="ESTUDIANTES_MATERIAS" Type="Self.ESTUDIANTES_MATERIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAS">
+        <PropertyRef Name="ID_materia" />
+      </Principal>
+      <Dependent Role="ESTUDIANTES_MATERIAS">
+        <PropertyRef Name="ID_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UTILITIES_APPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CONTACTOes" EntityType="Self.CONTACTO" />
+    <EntitySet Name="ESTUDIANTES" EntityType="Self.ESTUDIANTE" />
+    <EntitySet Name="ESTUDIANTES_MATERIAS" EntityType="Self.ESTUDIANTES_MATERIAS" />
+    <EntitySet Name="EVENTOS" EntityType="Self.EVENTO" />
+    <EntitySet Name="MATERIAS" EntityType="Self.MATERIA" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__ESTUDIANT__ID_es__3D5E1FD2" Association="Self.FK__ESTUDIANT__ID_es__3D5E1FD2">
+      <End Role="ESTUDIANTES" EntitySet="ESTUDIANTES" />
+      <End Role="ESTUDIANTES_MATERIAS" EntitySet="ESTUDIANTES_MATERIAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATERIA_ESTUDAINTE" Association="Self.FK_MATERIA_ESTUDAINTE">
+      <End Role="MATERIAS" EntitySet="MATERIAS" />
+      <End Role="ESTUDIANTES_MATERIAS" EntitySet="ESTUDIANTES_MATERIAS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
