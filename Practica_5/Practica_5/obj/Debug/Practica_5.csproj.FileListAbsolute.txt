@@ -113,3 +113,4 @@ C:\Users\Dell\Source\Repos\Practica5\Practica_5\Practica_5\bin\es\Microsoft.AspN
 C:\Users\Dell\Source\Repos\Practica5\Practica_5\Practica_5\obj\Debug\Practica_5.csproj.CopyComplete
 C:\Users\Dell\Source\Repos\Practica5\Practica_5\Practica_5\obj\Debug\Practica_5.dll
 C:\Users\Dell\Source\Repos\Practica5\Practica_5\Practica_5\obj\Debug\Practica_5.pdb
+C:\Users\Dell\Source\Repos\Practica5\Practica_5\Practica_5\obj\Debug\Practica_5.csprojAssemblyReference.cache

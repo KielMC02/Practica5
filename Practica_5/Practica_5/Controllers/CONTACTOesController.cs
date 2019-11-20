@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -153,5 +154,55 @@ namespace Practica_5.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Importar()
+        {
+            return View(new List<CustomerModel>());
+        }
+
+        [HttpPost]
+        public ActionResult Importar(HttpPostedFileBase postedFile, string path)
+        {
+            List<CustomerModel> customers = new List<CustomerModel>();
+
+            string filePath = string.Empty;
+            if (postedFile != null)
+            {
+                path = Server.MapPath("~/Uploads/" + postedFile.FileName);
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                filePath = path + Path.GetFileName(postedFile.FileName);
+                string extension = Path.GetExtension(postedFile.FileName);
+                postedFile.SaveAs(filePath);
+
+                string csvData = System.IO.File.ReadAllText(filePath);
+
+                foreach (string row in csvData.Split('\n'))
+                {
+
+                    if (!string.IsNullOrEmpty(row))
+                    {
+                        customers.Add(new CustomerModel
+                        {
+
+                            ID = int.Parse(row.Split(',')[0].ToString().Replace("-", " ").Trim()),
+                            Nombre = row.Split(',')[1],
+                            Apellido = row.Split(',')[2],
+                            Telefono = row.Split(',')[3],
+                            Direccion = row.Split(',')[4],
+                            Edad = int.Parse(row.Split(',')[5].ToString().Replace("-", " ").Trim()),
+                            Sexo = row.Split(',')[6]
+
+                        }); ;
+
+                    }
+                }
+            }
+            return View(customers);
+        }
+
     }
 }
