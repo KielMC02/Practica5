@@ -449,7 +449,7 @@ namespace Practica_5.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Bienvenida", "ESTUDIANTEs");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
