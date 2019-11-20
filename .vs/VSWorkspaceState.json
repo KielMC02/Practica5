@@ -1,6 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Practica_5",
+    "\\Practica_5\\Practica_5",
+    "\\Practica_5\\Practica_5\\App_Start",
+    "\\Practica_5\\Practica_5\\Controllers",
+    "\\Practica_5\\Practica_5\\Views",
+    "\\Practica_5\\Practica_5\\Views\\Home"
   ],
+  "SelectedNode": "\\Practica_5\\Practica_5.sln",
   "PreviewInSolutionExplorer": false
 }
