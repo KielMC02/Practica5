@@ -24,9 +24,13 @@ namespace Practica_5.Models
         public int ID_materia { get; set; }
         [Display(Name = "Nombre de la Materia")]
         public string nombre { get; set; }
+        [Display(Name = "Descripcion")]
         public string descripcion { get; set; }
+        [Display(Name = "Horario")]
         public string horario { get; set; }
+        [Display(Name = "Creditos")]
         public Nullable<int> creditos { get; set; }
+        [Display(Name = "Profesor")]
         public string profesor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

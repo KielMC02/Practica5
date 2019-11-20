@@ -286,7 +286,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\ESTUDIANTEs\Consultar_Materias.cshtml" />
+    <Content Include="Views\ESTUDIANTEs\Consultar_Estudiantes.cshtml" />
     <Content Include="Views\ESTUDIANTEs\Mostrar_Materias.cshtml" />
   </ItemGroup>
   <ItemGroup>

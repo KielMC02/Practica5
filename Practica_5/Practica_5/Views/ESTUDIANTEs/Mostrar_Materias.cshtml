@@ -1,47 +1,101 @@
 ﻿@model IEnumerable<Practica_5.Models.ESTUDIANTES_MATERIAS>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <!DOCTYPE html>
 <html>
 <head>
-</head>
-<body>
-    <table class="table">
-        <tr>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.ESTUDIANTE.nombre)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.MATERIA.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MATERIA.descripcion)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.ESTUDIANTE.nombre)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.MATERIA.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MATERIA.descripcion)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID_estudiante_materia }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID_estudiante_materia }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID_estudiante_materia })
-                </td>
-            </tr>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        .tabla {
+            background-color: white;
+            color: black;
+            font-family: 'Roboto', sans-serif;
         }
 
-    </table>
+        .td {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .h3{
+            font-family: 'Roboto', sans-serif;
+        }
+        .p{
+            font-family: 'Roboto', sans-serif;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h3>Lista de Materias Seleccionadas</h3>
+    </center>
+    <h4>
+        @foreach (var bnombre in Model)
+        {
+            @Html.DisplayFor(model => bnombre.ESTUDIANTE.nombre) <label> </label>
+            @Html.DisplayFor(model2 => bnombre.ESTUDIANTE.apellido)
+            var contar = 1;
+            if(contar == 1)
+            {
+                break;
+            }
+        }
+    </h4>
+    <div class="table-responsive">
+        <table class="table table-sm">
+            <thead class="tabla">
+                <tr>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.ESTUDIANTE.nombre)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.MATERIA.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MATERIA.descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MATERIA.horario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MATERIA.creditos)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MATERIA.profesor)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              @foreach (var item in Model)
+               {
+                    <tr>
+                        @*<td>
+                             @Html.DisplayFor(modelItem => item.ESTUDIANTE.nombre)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MATERIA.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MATERIA.descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MATERIA.horario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MATERIA.creditos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MATERIA.profesor)
+                        </td>
+                        @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID_estudiante_materia }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID_estudiante_materia }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID_estudiante_materia })
+                        </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    <a class="btn btn-danger" href="/ESTUDIANTEs/Consultar_Estudiantes">Volver a la Lista de Estudiantes</a>
+    </div>
 </body>
 </html>

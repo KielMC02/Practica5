@@ -21,7 +21,7 @@ namespace Practica_5.Controllers
 
         // GET: ESTUDIANTES
         //Este Metodo Carga el Listado de Estudiantes Inscritos
-        public ActionResult Consultar_Materias()
+        public ActionResult Consultar_Estudiantes()
         {
             return View(db.ESTUDIANTES.ToList());
         }
@@ -30,7 +30,7 @@ namespace Practica_5.Controllers
         {
             if(id_estudiante == null)
             {
-                return RedirectToAction("Consultar_Materias");
+                return RedirectToAction("Consultar_Estudiantes");
             }
             //La Variable lista_materias almacena una lista de todas las materias que tienen el id del estudiante seleccionado
             var materia_estudiantes = (from x in db.ESTUDIANTES_MATERIAS
