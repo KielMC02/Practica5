@@ -13,8 +13,9 @@ namespace Practica_5.Controllers
 {
     public class CONTACTOesController : Controller
     {
+    
         private UTILITIES_APPEntities db = new UTILITIES_APPEntities();
-
+        [Authorize]
         // GET: CONTACTOes
         public ActionResult Index()
         {

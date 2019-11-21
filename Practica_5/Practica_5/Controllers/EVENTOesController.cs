@@ -13,7 +13,7 @@ namespace Practica_5.Controllers
     public class EVENTOesController : Controller
     {
         private UTILITIES_APPEntities db = new UTILITIES_APPEntities();
-
+        [Authorize]
         // GET: EVENTOes
         public ActionResult Index()
         {

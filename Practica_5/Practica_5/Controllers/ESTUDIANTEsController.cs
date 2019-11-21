@@ -13,7 +13,7 @@ namespace Practica_5.Controllers
     public class ESTUDIANTEsController : Controller
     {
         private UTILITIES_APPEntities db = new UTILITIES_APPEntities();
-
+        [Authorize]
         public ActionResult Bienvenida()
         {
             return View();
@@ -40,6 +40,10 @@ namespace Practica_5.Controllers
           
             return View(materia_estudiantes);
 
+        }
+        public ActionResult Acerca_de()
+        {
+            return View();
         }
 
         ////// GET: ESTUDIANTEs/Details/5
