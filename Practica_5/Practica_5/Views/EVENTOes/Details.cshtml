@@ -1,0 +1,54 @@
+﻿@model Practica_5.Models.EVENTO
+
+@{
+    ViewBag.Title = "Details";
+}
+<br />
+<h2>DETALLES</h2>
+<br />
+<br />
+<brs />
+
+
+<div class="panel-success">
+    <div class="panel-heading">DETALLES DEL EVENTO</div>
+    <div class="panel-body">
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.fecha)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fecha)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.hora)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.hora)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.descripcion)
+            </dd>
+
+        </dl>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("EDITAR", "Edit", new { id = Model.ID_evento }, new { @class = "btn btn-warning" })
+</p>
+<p>
+    <div>
+
+        <button class="btn btn-info" onclick="location.href=('@Url.Action("Index","EVENTOes")')">VOLVER ATRAS</button>
+    </div>
+</p>

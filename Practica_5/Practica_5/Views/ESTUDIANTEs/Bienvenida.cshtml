@@ -32,7 +32,7 @@
                 <h3>Agenda electrónica</h3>
                 <p>Podremos ver los contactos guardados en nuestra agenta, editarlos, eliminarlos y filtrarlos por Nombre o Numero de celular</p>
                 <center>
-                    <p><button type="button" class="btn btn-primary" href=" ">Ir a la Agenda</button></p>
+                    <button class="btn btn-primary" onclick="location.href=('@Url.Action("index","CONTACTOes")')">IR A CONTACTOS</button>
                 </center>
             </div>
 
@@ -40,7 +40,7 @@
                 <h3>Calendario de Eventos</h3>
                 <p>Podremos Registrar nuestros eventos para tenerlos pendientes y nunca perder ninguno.</p>
                 <center>
-                    <p><button type="button" class="btn btn-primary" href=" ">Ir al Calendario</button></p>
+                    <button class="btn btn-info" onclick="location.href=('@Url.Action("Index","EVENTOes")')">IR A EVENTOS</button>
                 </center>
             </div>
 
@@ -48,7 +48,7 @@
                 <h3>Lector de Archivos</h3>
                 <p>Puede seleccionar un archivo de Excel para verificar su contenido.</p>
                 <center>
-                    <button type="button" class="btn btn-primary" href=" ">Leer Archivo</button>
+                    <button class="btn btn-primary" onclick="location.href=('@Url.Action("Importar","CONTACTOes")')">IMPORTAR CONTACTOS</button>
                 </center>
             </div>
         </div>

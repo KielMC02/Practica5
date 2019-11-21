@@ -1,0 +1,50 @@
+﻿@model Practica_5.Models.CONTACTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CONTACTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Nombre Completo</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            <label>Telefono</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.celular)
+        </dd>
+
+        <dt>
+            <label>Correo Electronico</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            <label>Direccion</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("EDITAR", "Edit", new { id = Model.ID_contacto }, new { @class = "btn btn-warning" }) |
+    <button class="btn btn-info" onclick="location.href=('@Url.Action("Index","CONTACTOes")')">VOLVER ATRAS</button>
+</p>

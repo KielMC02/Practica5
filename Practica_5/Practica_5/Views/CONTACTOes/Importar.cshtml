@@ -1,0 +1,87 @@
+﻿@using Practica_5.Models
+
+@model IEnumerable<CustomerModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>CARGAR DATOS DE ARCHIVOS EXCEL</h1>
+    <h4>.Xml</h4>
+    <h4>.csv</h4>
+</div>
+
+<style type="text/css">
+    body {
+        font-family: Arial;
+        font-size: 10pt;
+    }
+
+    h1 {
+        font-family: Algerian;
+        background-color: antiquewhite;
+    }
+
+    table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        border-color: #fff;
+    }
+
+        table th {
+            background-color: #B8DBFD;
+            color: #333;
+            font-weight: bold;
+        }
+
+        table th, table td {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        table, table table td {
+            border: 0px solid #000000;
+        }
+</style>
+@using (Html.BeginForm("Importar", "CONTACTOes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="postedfile" class="alert-danger btn-toolbar " />
+    <br />
+    <input type="submit" value="IMPORTAR" class="btn-success btn-lg" />
+}
+
+@if (Model.Count() > 0)
+{
+    <hr />
+
+    <table cellpadding="0" cellspacing="0">
+
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>TELEFONO</th>
+            <th>DIRECCION</th>
+            <th>EDAD</th>
+            <th>SEXO</th>
+        </tr>
+        @foreach (CustomerModel customer in Model)
+        {
+            <tr>
+                <td>@customer.ID</td>
+                <td>@customer.Nombre</td>
+                <td>@customer.Apellido</td>
+                <td>@customer.Telefono</td>
+                <td>@customer.Direccion</td>
+                <td>@customer.Edad</td>
+                <td>@customer.Sexo</td>
+
+            </tr>
+        }
+    </table>
+}
+
+
+
+
